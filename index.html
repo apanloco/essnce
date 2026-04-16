@@ -2,64 +2,64 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ESSNCE Parfymer — Dupeguide</title>
 <style>
-@page { size: A4; margin: 14mm 12mm; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+/* --- Screen defaults (mobile-first) --- */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 8.5pt;
   color: #111;
-  line-height: 1.22;
+  line-height: 1.4;
+  font-size: 16px;
+  padding: 14px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 h1 {
-  font-size: 15pt;
-  margin: 0 0 3px 0;
+  font-size: 22px;
+  margin: 0 0 6px 0;
   letter-spacing: 1px;
 }
 h2 {
-  font-size: 11pt;
-  margin: 12px 0 4px 0;
+  font-size: 16px;
+  margin: 22px 0 8px 0;
   color: #222;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-bottom: 0.6pt solid #333;
-  padding-bottom: 2px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 4px;
 }
 h2.upcoming { color: #777; border-bottom-color: #aaa; }
-.sub { font-size: 8pt; color: #555; margin: 0 0 8px 0; }
+.sub { font-size: 14px; color: #555; margin: 0 0 14px 0; }
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
-col.name  { width: 27%; }
-col.dupe  { width: 47%; }
-col.price { width: 26%; }
-col.type  { width: 8%; }
 th, td {
-  padding: 3px 5px;
-  border-bottom: 0.4pt solid #ccc;
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
   vertical-align: top;
+  text-align: left;
   word-wrap: break-word;
 }
 thead th {
   background: #f2f2f2;
-  text-align: left;
-  font-size: 8pt;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 0.8pt solid #333;
+  border-bottom: 2px solid #333;
 }
 tbody tr:nth-child(even) { background: #fafafa; }
 td.name { font-weight: 600; }
-td.type { text-align: center; font-size: 7.5pt; color: #555; }
+td.type { text-align: center; font-size: 13px; color: #555; }
 td.dash { color: #888; font-style: italic; }
-td.price { text-align: left; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .count {
-  font-size: 7.5pt;
+  font-size: 12px;
   color: #888;
   font-weight: normal;
   letter-spacing: 0;
@@ -67,22 +67,133 @@ td.price { text-align: left; white-space: nowrap; font-variant-numeric: tabular-
   margin-left: 6px;
 }
 .notes {
-  margin-top: 10px;
-  font-size: 7.5pt;
+  margin-top: 20px;
+  font-size: 13px;
   color: #444;
-  border-top: 0.4pt solid #ccc;
-  padding-top: 5px;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
 }
-.notes ul { margin: 3px 0 0 14px; padding: 0; }
-.notes li { margin-bottom: 1.5px; }
-tr { page-break-inside: avoid; }
-h2 { page-break-after: avoid; }
+.notes ul { margin: 6px 0 0 18px; padding: 0; }
+.notes li { margin-bottom: 3px; }
+
+.pdf-link {
+  display: inline-block;
+  margin: 0 0 14px 0;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: #222;
+  background: #f2f2f2;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.pdf-link:hover { background: #e8e8e8; }
+
+/* --- Narrow screens: kort-layout istället för tabell --- */
+@media (max-width: 600px) {
+  body { padding: 12px 10px; font-size: 15px; }
+  h1 { font-size: 19px; }
+  h2 { font-size: 14px; margin: 18px 0 6px 0; }
+  .sub { font-size: 13px; }
+
+  table, tbody, tr { display: block; width: 100%; }
+  colgroup, thead { display: none; }
+
+  tbody tr {
+    padding: 10px 2px;
+    border-bottom: 1px solid #ddd;
+    background: transparent !important;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 10px;
+    row-gap: 2px;
+  }
+  td {
+    padding: 0;
+    border: none;
+    text-align: left;
+  }
+  td.name {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  td.price {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+    color: #555;
+    font-size: 14px;
+  }
+  td.dupe {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    color: #555;
+    font-size: 14px;
+  }
+  td.type {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    text-align: left;
+    font-size: 12px;
+    color: #888;
+  }
+}
+
+/* --- Print / PDF: behåll A4-layouten --- */
+@media print {
+  .pdf-link { display: none; }
+  @page { size: A4; margin: 14mm 12mm; }
+  body {
+    font-size: 8.5pt;
+    line-height: 1.22;
+    padding: 0;
+    max-width: none;
+    margin: 0;
+  }
+  h1 { font-size: 15pt; margin: 0 0 3px 0; }
+  h2 {
+    font-size: 11pt;
+    margin: 12px 0 4px 0;
+    border-bottom: 0.6pt solid #333;
+    padding-bottom: 2px;
+  }
+  .sub { font-size: 8pt; margin: 0 0 8px 0; }
+  table { table-layout: fixed; margin-bottom: 4px; }
+  col.name  { width: 27%; }
+  col.dupe  { width: 47%; }
+  col.price { width: 26%; }
+  col.type  { width: 8%; }
+  th, td {
+    padding: 3px 5px;
+    border-bottom: 0.4pt solid #ccc;
+  }
+  thead th {
+    font-size: 8pt;
+    border-bottom: 0.8pt solid #333;
+  }
+  td.type { font-size: 7.5pt; }
+  .count { font-size: 7.5pt; }
+  .notes {
+    margin-top: 10px;
+    font-size: 7.5pt;
+    border-top: 0.4pt solid #ccc;
+    padding-top: 5px;
+  }
+  .notes ul { margin: 3px 0 0 14px; }
+  .notes li { margin-bottom: 1.5px; }
+  tr { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+}
 </style>
 </head>
 <body>
 
 <h1>ESSNCE PARFYMER — DUPEGUIDE</h1>
 <p class="sub">Alla ESSNCE-parfymer kostar <strong>340 kr / 50 ml</strong>. Priserna i högra kolumnen är ungefärliga svenska butikspriser för 50 ml av originalet (april 2026). Där 50 ml inte säljs anges närmaste storlek.</p>
+<a class="pdf-link" href="essnce.pdf" download>Ladda ner som PDF</a>
 
 <h2>Dam <span class="count">46 st</span></h2>
 <table>
