@@ -93,7 +93,7 @@ Alla ESSNCE-parfymer kostar **360 kr / 50 ml**. Priserna i högra kolumnen är u
 | ESSNCE-parfym | Typ | Dupar | Original ~50 ml (SEK) |
 |---|---|---|---|
 | Forever June | ? | — (ESSNCE Original, Community Edition) | — |
-| Noir Cuir | Herr | Tom Ford — Ombré Leather | ~1 500 kr |
+| Noir Cuir | Herr | Tom Ford — Ombré Leather | ~1 010 kr |
 | Pear Obsession | ? | ? | ? |
 | Pistacia Vera | ? | Kayali — Yum Pistachio Gelato 33 | ~1 100 kr |
 | Rock 'n' Rose | Dam | Frédéric Malle — Portrait of a Lady | ~3 180 kr |
