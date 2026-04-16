@@ -1,6 +1,6 @@
 # ESSNCE Parfymer — Dupeguide
 
-Alla ESSNCE-parfymer kostar **340 kr / 50 ml**. Priserna i högra kolumnen är ungefärliga svenska butikspriser för 50 ml av originalet (april 2026). Där 50 ml inte säljs anges närmaste storlek.
+Alla ESSNCE-parfymer kostar **360 kr / 50 ml**. Priserna i högra kolumnen är ungefärliga svenska butikspriser för 50 ml av originalet (april 2026). Där 50 ml inte säljs anges närmaste storlek.
 
 ## Dam
 
@@ -46,7 +46,7 @@ Alla ESSNCE-parfymer kostar **340 kr / 50 ml**. Priserna i högra kolumnen är u
 | Summer Breeze | Dolce & Gabbana — Light Blue | ~600 kr |
 | Sweet Cara | Sol de Janeiro — Cheirosa '62 | ~700 kr |
 | Tarte Au Citron | — (ESSNCE Original) | — |
-| Toxique | Marc Jacobs — Decadence Divine | ~900 kr (utgången) |
+| Toxique | Marc Jacobs — Divine Decadence | ~900 kr (utgången) |
 | Tres Femme | Chanel — Coco Mademoiselle | ~1 650 kr |
 | Vanilla Baby | Billie Eilish — Eilish | ~830 kr |
 | Vanilla Sass' | Burberry — Goddess | ~1 000 kr |
@@ -67,7 +67,7 @@ Alla ESSNCE-parfymer kostar **340 kr / 50 ml**. Priserna i högra kolumnen är u
 | Coco 'Bout You | — (ESSNCE Original) | — |
 | Dewy Desert | — (ESSNCE Original) | — |
 | Drunk Apple Pie | Kilian — Angels' Share | ~2 580 kr |
-| Fleur Chère | MFK — Baccarat Rouge 540 | ~4 500 kr (70 ml) |
+| Fleur Chere | MFK — Baccarat Rouge 540 | ~4 500 kr (70 ml) |
 | High On Chai | — (ESSNCE Original) | — |
 | Lemon Eclair | — (ESSNCE Original, Creator Edition) | — |
 | Noble Eclat | Parfums de Marly — Althaïr | ~2 600 kr (75 ml) |
@@ -84,6 +84,7 @@ Alla ESSNCE-parfymer kostar **340 kr / 50 ml**. Priserna i högra kolumnen är u
 | Chaos Knight | Creed — Aventus | ~2 775 kr |
 | Intense Desire | Versace — Eros | ~720 kr |
 | Spicy Pepper | Dior — Sauvage | ~1 180 kr (60 ml) |
+| Suit & Tie | Dior — Homme Intense | ~1 150 kr |
 | Tres Homme | Chanel — Bleu de Chanel | ~1 540 kr |
 | Unknown Pleasure | Valentino — Uomo Born in Roma | ~940 kr |
 
@@ -97,7 +98,6 @@ Alla ESSNCE-parfymer kostar **340 kr / 50 ml**. Priserna i högra kolumnen är u
 | Rock 'n' Rose | Dam | Frédéric Malle — Portrait of a Lady | ~3 180 kr |
 | Sea You Soon | Dam | Giorgio Armani — Ocean di Gioia | ~995 kr |
 | Sex In A Bottle | Herr | Jean Paul Gaultier — Le Male Le Parfum | ~880 kr (75 ml) |
-| Suit & Tie | Herr | Dior — Homme Intense | ~1 150 kr |
 | Young Lady | Dam | Dior — Miss Dior | ~1 480 kr |
 
 ## Anmärkningar
