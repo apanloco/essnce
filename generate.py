@@ -112,9 +112,11 @@ def split_row(line: str):
 
 
 def md_inline(s: str) -> str:
-    """Minimal markdown inline: **bold**, *italic*, escape HTML."""
+    """Minimal markdown inline: [link](url), **bold**, *italic*, escape HTML."""
     # Escape HTML first
     s = html.escape(s)
+    # Links: [text](url)
+    s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', s)
     # Bold
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
     # Italic
@@ -226,6 +228,7 @@ thead th {
 }
 tbody tr:nth-child(even) { background: #fafafa; }
 td.name { font-weight: 600; }
+a { color: inherit; text-decoration: none; border-bottom: 0.3pt dotted #aaa; }
 td.type { text-align: center; font-size: 13px; color: #555; }
 td.dash { color: #888; font-style: italic; }
 td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
