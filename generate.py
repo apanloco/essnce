@@ -167,13 +167,19 @@ def render_section(section) -> str:
             tds.append(render_cell(cell, cls, idx == 0))
         body_rows.append("<tr>" + "".join(tds) + "</tr>")
 
+    if is_upcoming:
+        slug = "kommande"
+    else:
+        slug = section["raw_title"].lower().split()[0]
+
     return (
+        f'<section data-category="{slug}">\n'
         f'<h2{h2_class}>{html.escape(title)} '
         f'<span class="count">{count_suffix}</span></h2>\n'
         f"<table>\n<colgroup>{col_html}</colgroup>\n"
         f"<thead>{thead}</thead>\n<tbody>\n"
         + "\n".join(body_rows)
-        + "\n</tbody>\n</table>"
+        + "\n</tbody>\n</table>\n</section>"
     )
 
 
@@ -264,6 +270,26 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 }
 .pdf-link:hover { background: #e8e8e8; }
 
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0 0 16px 0;
+  padding: 10px 12px;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.filter-bar label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.filter-bar input { cursor: pointer; }
+
 /* --- Narrow screens: kort-layout istället för tabell --- */
 @media (max-width: 600px) {
   body { padding: 12px 10px; font-size: 15px; }
@@ -319,6 +345,8 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* --- Print / PDF: behåll A4-layouten --- */
 @media print {
   .pdf-link { display: none; }
+  .filter-bar { display: none !important; }
+  section[data-category] { display: block !important; }
   @page { size: A4; margin: 14mm 12mm; }
   body {
     font-size: 8.5pt;
@@ -381,9 +409,27 @@ def build_html(title, intro_html, sections, notes_html) -> str:
 <p class="sub">{intro_html}</p>
 <a class="pdf-link" href="{PDF.name}" download>Ladda ner som PDF</a>
 
+<div class="filter-bar" role="group" aria-label="Visa sektioner">
+  <label><input type="checkbox" data-filter="dam" checked> Dam</label>
+  <label><input type="checkbox" data-filter="unisex" checked> Unisex</label>
+  <label><input type="checkbox" data-filter="herr" checked> Herr</label>
+  <label><input type="checkbox" data-filter="kommande" checked> Kommande</label>
+</div>
+
 {sections_html}
 
 {notes_block}
+
+<script>
+document.querySelectorAll('.filter-bar input[data-filter]').forEach(cb => {{
+  cb.addEventListener('change', () => {{
+    const cat = cb.dataset.filter;
+    document.querySelectorAll('section[data-category="' + cat + '"]').forEach(sec => {{
+      sec.style.display = cb.checked ? '' : 'none';
+    }});
+  }});
+}});
+</script>
 
 </body>
 </html>

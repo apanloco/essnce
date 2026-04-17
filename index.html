@@ -91,6 +91,26 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 }
 .pdf-link:hover { background: #e8e8e8; }
 
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0 0 16px 0;
+  padding: 10px 12px;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.filter-bar label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.filter-bar input { cursor: pointer; }
+
 /* --- Narrow screens: kort-layout istället för tabell --- */
 @media (max-width: 600px) {
   body { padding: 12px 10px; font-size: 15px; }
@@ -146,6 +166,8 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* --- Print / PDF: behåll A4-layouten --- */
 @media print {
   .pdf-link { display: none; }
+  .filter-bar { display: none !important; }
+  section[data-category] { display: block !important; }
   @page { size: A4; margin: 14mm 12mm; }
   body {
     font-size: 8.5pt;
@@ -196,6 +218,14 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 <p class="sub">Alla ESSNCE-parfymer kostar <strong>360 kr / 50 ml</strong>. Priserna i högra kolumnen är ungefärliga svenska butikspriser för 50 ml av originalet (april 2026). Där 50 ml inte säljs anges närmaste storlek.</p>
 <a class="pdf-link" href="essnce.pdf" download>Ladda ner som PDF</a>
 
+<div class="filter-bar" role="group" aria-label="Visa sektioner">
+  <label><input type="checkbox" data-filter="dam" checked> Dam</label>
+  <label><input type="checkbox" data-filter="unisex" checked> Unisex</label>
+  <label><input type="checkbox" data-filter="herr" checked> Herr</label>
+  <label><input type="checkbox" data-filter="kommande" checked> Kommande</label>
+</div>
+
+<section data-category="dam">
 <h2>Dam <span class="count">46 st</span></h2>
 <table>
 <colgroup><col class="name"><col class="dupe"><col class="price"></colgroup>
@@ -249,7 +279,9 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 <tr><td class="name"><a href="https://essnce.se/products/warmn-spicy">Warm&#x27;n Spicy</a></td><td class="dupe"><a href="https://www.fragrantica.com/perfume/Lancome/La-Vie-Est-Belle-14982.html">Lancôme — La Vie est Belle</a></td><td class="price">~830 kr</td></tr>
 </tbody>
 </table>
+</section>
 
+<section data-category="unisex">
 <h2>Unisex <span class="count">19 st</span></h2>
 <table>
 <colgroup><col class="name"><col class="dupe"><col class="price"></colgroup>
@@ -276,7 +308,9 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 <tr><td class="name"><a href="https://essnce.se/products/woody-sandal">Woody Sandal</a></td><td class="dupe"><a href="https://www.fragrantica.com/perfume/DSQUARED2/He-Wood-1936.html">Dsquared2 — He Wood</a></td><td class="price">~500 kr (utgången)</td></tr>
 </tbody>
 </table>
+</section>
 
+<section data-category="herr">
 <h2>Herr <span class="count">6 st</span></h2>
 <table>
 <colgroup><col class="name"><col class="dupe"><col class="price"></colgroup>
@@ -290,7 +324,9 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 <tr><td class="name"><a href="https://essnce.se/products/unknown-pleasure">Unknown Pleasure</a></td><td class="dupe"><a href="https://www.fragrantica.com/perfume/Valentino/Valentino-Uomo-Born-in-Roma-55963.html">Valentino — Uomo Born in Roma</a></td><td class="price">~680 kr</td></tr>
 </tbody>
 </table>
+</section>
 
+<section data-category="kommande">
 <h2 class="upcoming">Kommande lanseringar (under utveckling) <span class="count">under utveckling · 10 st</span></h2>
 <table>
 <colgroup><col class="name"><col class="type"><col class="dupe" style="width:40%"><col class="price"></colgroup>
@@ -308,6 +344,7 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 <tr><td class="name"><a href="https://essnce.se/products/young-lady">Young Lady</a></td><td class="type">Dam</td><td class="dupe"><a href="https://www.fragrantica.com/perfume/Dior/Miss-Dior-Eau-de-Parfum-2021-68905.html">Dior — Miss Dior</a></td><td class="price">~1 100 kr</td></tr>
 </tbody>
 </table>
+</section>
 
 <div class="notes">
   <strong>Anmärkningar:</strong>
@@ -319,6 +356,17 @@ td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
   <li>Namnen länkar till ESSNCE:s produktsidor; dupe-namnen länkar till <a href="https://www.fragrantica.com/">Fragrantica</a>.</li>
 </ul>
 </div>
+
+<script>
+document.querySelectorAll('.filter-bar input[data-filter]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    const cat = cb.dataset.filter;
+    document.querySelectorAll('section[data-category="' + cat + '"]').forEach(sec => {
+      sec.style.display = cb.checked ? '' : 'none';
+    });
+  });
+});
+</script>
 
 </body>
 </html>
